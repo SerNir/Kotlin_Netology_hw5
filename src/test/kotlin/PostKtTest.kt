@@ -23,11 +23,11 @@ class PostKtTest {
         val posts = WallService
         posts.addPost(post0)
         posts.addPost(post1)
-        println(posts.addPost(post2))
+        posts.addPost(post2)
         posts.addPost(post3)
 
         val post4 = Post(4, 2, 2, 24052022, "Update Post", Comments(), "2000", 454, Repost(), 4525, "update")
-        println(posts.updatePost(post4))
+        assertEquals(true, posts.updatePost(post4))
     }
 
     @Test
@@ -44,6 +44,6 @@ class PostKtTest {
         posts.addPost(post3)
 
         val post4 = Post(0, 2, 2, 24052022, "Update Post", Comments("comment"), "2000", 454, Repost(), 4525, "update")
-        println(posts.updatePost(post4))
+        assertEquals(false, posts.updatePost(post4))
     }
 }

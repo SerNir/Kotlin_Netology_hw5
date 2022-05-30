@@ -29,21 +29,15 @@ object WallService {
     }
 
     fun updatePost(post: Post): Boolean {
-        var result = false
         for ((index, item) in posts.withIndex()) {
             if (post.id == item.id) {
                 posts[index] = post.copy(
-                    text = "",
-                    copyright = "",
-                    likes = 123,
-                    views = 1002,
-                    postType = "copy"
+                    ownerId = post.ownerId,
+                    date = post.date
                 )
-                result = true
-                break
-            } else
-                result = false
+                return true
+            }
         }
-        return result
+        return false
     }
 }
