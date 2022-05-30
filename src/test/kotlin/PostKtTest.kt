@@ -6,7 +6,7 @@ class PostKtTest {
 
     @Test
     fun addPostTest() {
-        val post0 = Post(0, 1, 1, 23052022, "FIRST POST", "comments", "", 212, 0, 212, "post")
+        val post0 = Post(0, 1, 1, 23052022, "FIRST POST", Comments("comment"), "", 212, Repost(), 212, "post")
         val posts = WallService
         val postTest = posts.addPost(post0)
 
@@ -15,10 +15,10 @@ class PostKtTest {
 
     @Test
     fun updatePostFromIdTrue() {
-        val post0 = Post(0, 1, 1, 23052022, "FIRST POST", "comments", "", 212, 0, 212, "post")
-        val post1 = Post(0, 1, 1, 23052022, "Second POST", "comments", "", 212, 0, 212, "post")
-        val post2 = Post(0, 1, 1, 23052022, "FIRST POST", "comments", "", 212, 0, 212, "post")
-        val post3 = Post(0, 1, 1, 23052022, "FIRST POST", "comments", "", 212, 0, 212, "post")
+        val post0 = Post(0, 1, 1, 23052022, "FIRST POST", Comments("comment"), " ", 212, Repost(), 212, "post")
+        val post1 = Post(0, 1, 1, 23052022, "Second POST", Comments("comment"), " ", 212, Repost(), 123, "post")
+        val post2 = Post(0, 1, 1, 23052022, "FIRST POST", Comments("comment"), "", 212, Repost(), 231, "post", 4)
+        val post3 = Post(0, 1, 1, 23052022, "FIRST POST", Comments("comment"), " ", 212, Repost(), 15, "post")
 
         val posts = WallService
         posts.addPost(post0)
@@ -26,16 +26,16 @@ class PostKtTest {
         println(posts.addPost(post2))
         posts.addPost(post3)
 
-        val post4 = Post(4, 2, 2, 24052022, "Update Post", "no comment", "2000", 454, 7, 4525, "update")
+        val post4 = Post(4, 2, 2, 24052022, "Update Post", Comments(), "2000", 454, Repost(), 4525, "update")
         println(posts.updatePost(post4))
     }
 
     @Test
     fun updatePostFromIdFalse() {
-        val post0 = Post(0, 1, 1, 23052022, "FIRST POST", "comments", "", 212, 0, 212, "post")
-        val post1 = Post(0, 1, 1, 23052022, "Second POST", "comments", "", 212, 0, 212, "post")
-        val post2 = Post(0, 1, 1, 23052022, "FIRST POST", "comments", "", 212, 0, 212, "post")
-        val post3 = Post(0, 1, 1, 23052022, "FIRST POST", "comments", "", 212, 0, 212, "post")
+        val post0 = Post(0, 1, 1, 23052022, "FIRST POST", Comments("comment"), " ", 212, Repost(), 212, "post")
+        val post1 = Post(0, 1, 1, 23052022, "Second POST", Comments("comment"), " ", 212, Repost(), 123, "post")
+        val post2 = Post(0, 1, 1, 23052022, "FIRST POST", Comments("comment"), " ", 212, Repost(), 231, "post", 4)
+        val post3 = Post(0, 1, 1, 23052022, "FIRST POST", Comments("comment"), " ", 212, Repost(), 15, "post")
 
         val posts = WallService
         posts.addPost(post0)
@@ -43,7 +43,7 @@ class PostKtTest {
         println(posts.addPost(post2))
         posts.addPost(post3)
 
-        val post4 = Post(0, 2, 2, 24052022, "Update Post", "no comment", "2000", 454, 7, 4525, "update")
+        val post4 = Post(0, 2, 2, 24052022, "Update Post", Comments("comment"), "2000", 454, Repost(), 4525, "update")
         println(posts.updatePost(post4))
     }
 }
